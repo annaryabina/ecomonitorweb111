@@ -44,7 +44,7 @@
   "externally_connectable": {
     "matches": [
       "http://localhost:*/*",
-      "https://annaryabina.github.io/ecomonitorweb11/",
+      "https://annaryabina.github.io/ecomonitorweb111/",
       "https://eco-monitor-app.netlify.app/*",
       "https://eco-monitor-app.vercel.app/*"
       
@@ -56,4 +56,5 @@
       "matches": ["<all_urls>"]
     }
   ]
+
 }
