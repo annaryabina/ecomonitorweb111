@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Эко-монитор Россия | Веб-приложение + Расширение</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+</head>
+<body>
+    <div class="container">
+        <header class="app-header">
+            <div class="header-content">
+                <div class="logo-container">
+                    <img src="https://via.placeholder.com/64/2e7d32/ffffff?text=ECO" alt="Логотип" class="logo">
+                    <div class="extension-status" id="extension-status">
+                        <i class="fas fa-plug"></i>
+                        <span>Расширение не подключено</span>
+                    </div>
+                </div>
+                <h1><i class="fas fa-leaf"></i> Эко-монитор Россия</h1>
+                <p class="subtitle">Веб-приложение + Расширение Chrome</p>
+            </div>
+            
+            <div class="connection-panel" id="connection-panel">
+                <div class="connection-info">
+                    <h3><i class="fas fa-link"></i> Подключение к расширению</h3>
+                    <p>Для работы с реальными данными установите наше расширение для Chrome:</p>
+                    <div class="connection-steps">
+                        <div class="step">
+                            <span class="step-number">1</span>
+                            <span>Установите расширение из Chrome Web Store</span>
+                        </div>
+                        <div class="step">
+                            <span class="step-number">2</span>
+                            <span>Обновите эту страницу</span>
+                        </div>
+                        <div class="step">
+                            <span class="step-number">3</span>
+                            <span>Данные будут синхронизироваться автоматически</span>
+                        </div>
+                    </div>
+                    <button id="install-extension-btn" class="btn btn-primary">
+                        <i class="fas fa-download"></i> Установить расширение
+                    </button>
+                    <button id="check-connection-btn" class="btn btn-secondary">
+                        <i class="fas fa-sync-alt"></i> Проверить подключение
+                    </button>
+                </div>
+            </div>
+            
+            <div class="city-selector">
+                <select id="city-select" class="city-dropdown">
+                    <option value="lipetsk">Липецк</option>
+                    <option value="moscow">Москва</option>
+                    <option value="petersburg">Санкт-Петербург</option>
+                </select>
+                <div class="city-info" id="city-info"></div>
+            </div>
+            
+            <div class="update-info">
+                <span>Обновлено: <span id="update-time">--:--</span></span>
+                <span class="data-source" id="data-source">Ожидание данных...</span>
+                <span class="refresh-controls">
+                    <button id="manual-refresh-btn" class="btn-icon" title="Обновить данные">
+                        <i class="fas fa-redo"></i>
+                    </button>
+                    <button id="force-extension-refresh" class="btn-icon" title="Запустить парсинг в расширении">
+                        <i class="fas fa-bolt"></i>
+                    </button>
+                </span>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <!-- Панель данных будет заполняться динамически -->
+            <div id="dashboard"></div>
+            
+            <!-- Сообщение о необходимости расширения -->
+            <div class="fallback-message" id="fallback-message">
+                <div class="message-content">
+                    <h3><i class="fas fa-info-circle"></i> Используются демо-данные</h3>
+                    <p>Для получения реальных данных установите расширение Chrome. 
+                    <a href="#" id="show-demo-btn">Продолжить с демо-данными</a></p>
+                </div>
+            </div>
+        </main>
+
+        <!-- Настройки -->
+        <div class="settings-panel" id="settings-panel">
+            <h3><i class="fas fa-cog"></i> Настройки синхронизации</h3>
+            <div class="settings-content">
+                <div class="setting">
+                    <label>
+                        <input type="checkbox" id="auto-sync" checked>
+                        Автоматическая синхронизация с расширением
+                    </label>
+                </div>
+                <div class="setting">
+                    <label>
+                        <input type="checkbox" id="use-extension-data" checked>
+                        Использовать данные из расширения
+                    </label>
+                </div>
+                <div class="setting">
+                    <label>Интервал синхронизации:</label>
+                    <select id="sync-interval">
+                        <option value="30">30 секунд</option>
+                        <option value="60" selected>1 минута</option>
+                        <option value="300">5 минут</option>
+                        <option value="600">10 минут</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <footer class="app-footer">
+            <p>Эко-монитор Россия &copy; 2024 | Тарасов, Рябинина, Косарева</p>
+            <p class="footer-info">
+                <span id="extension-info">Расширение не установлено</span> | 
+                <span id="data-status">Данные: демо-режим</span>
+            </p>
+        </footer>
+    </div>
+
+    <!-- Скрипты -->
+    <script src="app.js"></script>
+</body>
+</html>
